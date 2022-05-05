@@ -16,6 +16,7 @@ class TestExamController extends AbstractController
     #[Route('/test/exam', name: 'app_test_exam')]
     public function index(): Response
     {
+        $test="anas";
         return $this->render('test_exam/index.html.twig', [
             'controller_name' => 'TestExamController',
         ]);
