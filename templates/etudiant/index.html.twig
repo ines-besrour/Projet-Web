@@ -1,0 +1,37 @@
+{% extends 'layout.html.twig' %}
+
+{% block titleBody %}Liste des Personnes {% endblock %}
+
+{% block body %}
+    {% for msg in app.session.flashBag.get('success')%}
+        <div class="alert alert-success">
+            {{msg}}
+        </div>
+    {% endfor %}
+    {% for msg in app.session.flashBag.get('error')%}
+        <div class="alert alert-danger">
+            {{msg}}
+        </div>
+    {% endfor %}
+    <a class="h4" href="{{ path('etudiant.edit' , {} )}}">Ajouter un etudiant</a>
+    <table class="table">
+        <tr>
+            <th>firstname</th>
+            <th>name</th>
+            <th>Section</th>
+        </tr>
+        {%for etudiant in etudiants %}
+            <tr class="table-{% if(loop.index is odd)%}info{%else%}warning{%endif%}">
+                <td>{{etudiant.prenom}}</td>
+                <td>{{etudiant.nom}}</td>
+                {% if(etudiant.section is null)%}
+                <td>Etudiant non encore affecté à une section</td>
+                {%else%}
+                <td>{{etudiant.section}}</td>
+                {%endif%}
+                <td><a href="{{path('etudiant.delete',{id: etudiant.id} ) }}">delete</a></td>
+                <td><a href="{{path('etudiant.edit',{id: etudiant.id} ) }}">edit</a></td>
+            </tr>
+        {%endfor%}
+    </table>
+{% endblock %}

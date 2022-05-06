@@ -2,32 +2,32 @@
 
 namespace App\Repository;
 
-use App\Entity\TestExam;
+use App\Entity\Section;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Exception\ORMException;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<TestExam>
+ * @extends ServiceEntityRepository<Section>
  *
- * @method TestExam|null find($id, $lockMode = null, $lockVersion = null)
- * @method TestExam|null findOneBy(array $criteria, array $orderBy = null)
- * @method TestExam[]    findAll()
- * @method TestExam[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Section|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Section|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Section[]    findAll()
+ * @method Section[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TestExamRepository extends ServiceEntityRepository
+class SectionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TestExam::class);
+        parent::__construct($registry, Section::class);
     }
 
     /**
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function add(TestExam $entity, bool $flush = false): void
+    public function add(Section $entity, bool $flush = false): void
     {
         $this->_em->persist($entity);
         if ($flush) {
@@ -39,7 +39,7 @@ class TestExamRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(TestExam $entity, bool $flush = false): void
+    public function remove(Section $entity, bool $flush = false): void
     {
         $this->_em->remove($entity);
         if ($flush) {
@@ -48,24 +48,24 @@ class TestExamRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return TestExam[] Returns an array of TestExam objects
+//     * @return Section[] Returns an array of Section objects
 //     */
 //    public function findByExampleField($value): array
 //    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
+//        return $this->createQueryBuilder('s')
+//            ->andWhere('s.exampleField = :val')
 //            ->setParameter('val', $value)
-//            ->orderBy('t.id', 'ASC')
+//            ->orderBy('s.id', 'ASC')
 //            ->setMaxResults(10)
 //            ->getQuery()
 //            ->getResult()
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?TestExam
+//    public function findOneBySomeField($value): ?Section
 //    {
-//        return $this->createQueryBuilder('t')
-//            ->andWhere('t.exampleField = :val')
+//        return $this->createQueryBuilder('s')
+//            ->andWhere('s.exampleField = :val')
 //            ->setParameter('val', $value)
 //            ->getQuery()
 //            ->getOneOrNullResult()
