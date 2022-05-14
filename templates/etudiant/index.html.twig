@@ -3,6 +3,7 @@
 {% block titleBody %}Liste des Personnes {% endblock %}
 
 {% block body %}
+    <link href="{{asset('assets/styles.css')}}" rel="stylesheet" />
     {% for msg in app.session.flashBag.get('success')%}
         <div class="alert alert-success">
             {{msg}}
@@ -22,16 +23,17 @@
         </tr>
         {%for etudiant in etudiants %}
             <tr class="table-{% if(loop.index is odd)%}info{%else%}warning{%endif%}">
-                <td>{{etudiant.prenom}}</td>
-                <td>{{etudiant.nom}}</td>
+                <td class="td">{{etudiant.prenom}}</td>
+                <td class="td">{{etudiant.nom}}</td>
                 {% if(etudiant.section is null)%}
-                <td>Etudiant non encore affecté à une section</td>
+                <td class="td">Etudiant non encore affecté à une section</td>
                 {%else%}
-                <td>{{etudiant.section}}</td>
+                <td class="td">{{etudiant.section}}</td>
                 {%endif%}
-                <td><a href="{{path('etudiant.delete',{id: etudiant.id} ) }}">delete</a></td>
-                <td><a href="{{path('etudiant.edit',{id: etudiant.id} ) }}">edit</a></td>
+                <td class="td"><a href="{{path('etudiant.delete',{id: etudiant.id} ) }}">delete</a></td>
+                <td class="td"><a href="{{path('etudiant.edit',{id: etudiant.id} ) }}">edit</a></td>
             </tr>
         {%endfor%}
     </table>
+    <script src="{{ asset('assets/script.js') }}"></script>
 {% endblock %}

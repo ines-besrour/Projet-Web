@@ -7,6 +7,10 @@
 // Scripts
 // 
 
+document.querySelectorAll("td").forEach(el=>el.addEventListener("click", function(e) {
+    el.classList.toggle('highlight')
+}));
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
